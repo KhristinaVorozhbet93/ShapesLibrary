@@ -1,11 +1,10 @@
-using FluentAssertions;
+п»їusing FluentAssertions;
 using ShapesLibrary;
 
-namespace ShapeTests
+namespace ShapeLib.Tests
 {
-    public class ShapesTests
+    public class TriangleTests
     {
-        //Треугольник
         [Fact]
         public void Triangle_has_correct_props()
         {
@@ -72,61 +71,6 @@ namespace ShapeTests
             triangle.Should().BeAssignableTo<Shape>();
             circle.Should().BeAssignableTo<Shape>();
             square.Should().BeAssignableTo<Shape>();
-
-        }
-
-        //Круг
-        [Fact]
-        public void Circle_has_correct_props()
-        {
-            var circle = new Circle(6);
-
-            circle.Radius.Should().Be(6);
-        }
-
-        [Theory]
-        [InlineData(-5)]
-        [InlineData(0)]
-        public void Circle_creation_with_negative_radius_rejected(double radius)
-        {
-            FluentActions.Invoking(() => new Circle(radius))
-                 .Should()
-                 .Throw<ArgumentException>();
-        }
-
-        [Fact]
-        public void Area_of_circle_with_radius_5_should_be_78()
-        {
-            var circle = new Circle(5);
-
-            circle.Area.Should().Be(78.5);
-        }
-
-        //Квадрат
-        [Fact]
-        public void Square_has_correct_props()
-        {
-            var square = new Square(3); 
-
-            square.A.Should().Be(3);
-        }
-
-        [Theory]
-        [InlineData(-5)]
-        [InlineData(0)]
-        public void Square_creation_with_negative_side_rejected(double side)
-        {
-            FluentActions.Invoking(() => new Square(side))
-                 .Should()
-                 .Throw<ArgumentException>();
-        }
-
-        [Fact]
-        public void Area_of_square_with_side_3_should_be_9()
-        {
-            var square = new Square(3);
-
-            square.Area.Should().Be(9);
         }
     }
 }
